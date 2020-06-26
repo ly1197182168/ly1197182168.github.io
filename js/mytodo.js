@@ -2,8 +2,9 @@
     'use strict';
 
     const DB = 'mytodo';
-    const SECONDS = 1000 * 60 * 60 *24;
-    const MONTHS = ['Jan.', 'Feb .', 'Mar .', 'Apr .', 'May .', 'Jun .', 'Jul .', 'Aug .', 'Sept .', 'Oct .', 'Nov .', 'Dec .'];
+    const SECONDS = 1000 * 60 * 60 * 24;
+    const MONTHS = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May.', 'Jun.', 'Jul.', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.'];
+    const PER_SECOND = 1000;
 
     function initDB() {
         if (!localStorage.getItem(DB)) {
@@ -54,7 +55,7 @@
         localStorage.setItem(DB, JSON.stringify(items));
     }
 
-    function updateAll(items){
+    function updateAll(items) {
         localStorage.setItem(DB, JSON.stringify(items));
     }
 
@@ -64,6 +65,21 @@
             items[i].completed = completed;
         }
         localStorage.setItem(DB, JSON.stringify(items));
+    }
+
+    function updateTime() {
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth();
+        month = MONTHS[month];
+        var day = date.getDate();
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+
+        document.getElementById('clock').innerHTML = (hour < 10 ? '0' + hour : hour) +
+            ':' + (minute < 10 ? '0' + minute : minute);
+        document.getElementById('day').innerHTML = month + (day < 10 ? '0' + day : day);
+        document.getElementById('year').innerHTML = year;
     }
 
 
@@ -205,15 +221,15 @@
         var status;
         var now = new Date().getTime();
         var date = new Date(item.date).getTime();
-        if((date - now) / SECONDS < -1){
+        if ((date - now) / SECONDS < -1) {
             status = 'expired';
-        }else if((date - now) / SECONDS < 3){
+        } else if ((date - now) / SECONDS < 3) {
             status = 'urgent';
-        }else{
+        } else {
             status = 'adequate';
         }
         todoList.innerHTML = [
-            '<div class="todo-date '+ status +'">' + item.date + '</div>',
+            '<div class="todo-date ' + status + '">' + item.date + '</div>',
             '<ul class="todo-content">',
             '   <li id=' + item.id + ' class="todo-item" >',
             '       <span class="toggle"><img ' + 'class="' + (item.completed ? 'checked' : '') + '"></span>',
@@ -290,20 +306,20 @@
 
                 let todoItems = document.getElementsByClassName('todo-item');
                 for (let i = 0; i < todoItems.length; ++i) {
-                    if (todoItems[i].id == todoItem.id){
+                    if (todoItems[i].id == todoItem.id) {
                         continue;
                     }
                     let offset = getOffset(todoItems[i]);
-                    if ((event.touches[0].clientX > offset[0]) && (event.touches[0].clientX < offset[0] + offset[2]) 
-                        && (event.touches[0].clientY > offset[1]) && (event.touches[0].clientY < offset[1] + offset[3])) {
+                    if ((event.touches[0].clientX > offset[0]) && (event.touches[0].clientX < offset[0] + offset[2]) &&
+                        (event.touches[0].clientY > offset[1]) && (event.touches[0].clientY < offset[1] + offset[3])) {
                         if (event.touches[0].clientY < offset[1] + offset[3] / 2) {
                             todoItems[i].parentElement.insertBefore(dragAlt, todoItems[i]);
                             break;
                         } else {
-                            if(!todoItems[i].nextElementSibling){
+                            if (!todoItems[i].nextElementSibling) {
                                 todoItems[i].parentElement.appendChild(dragAlt);
                                 break;
-                            }else{
+                            } else {
                                 todoItems[i].parentElement.insertBefore(dragAlt, todoItems[i].nextElementSibling);
                                 break;
                             }
@@ -315,32 +331,32 @@
             }
         }, false);
 
-        todoItem.addEventListener('touchend', function(event){
-            if(drag){
+        todoItem.addEventListener('touchend', function (event) {
+            if (drag) {
                 todoItem.style.position = 'static';
                 dragAlt.parentElement.insertBefore(todoItem, dragAlt);
                 todoItem.parentElement.removeChild(dragAlt);
                 drag = null;
 
                 let offset = getOffset(todoItem);
-                if((event.changedTouches[0].clientX < offset[0] - 0.75 * offset[2]) || (event.changedTouches[0].clientX > offset[0] +  0.75 * offset[2])){
+                if ((event.changedTouches[0].clientX < offset[0] - 0.75 * offset[2]) || (event.changedTouches[0].clientX > offset[0] + 0.75 * offset[2])) {
                     let todoContent = todoItem.parentElement;
                     let todoList = todoContent.parentElement;
                     let container = document.getElementById('todo-list-container');
-                    if(todoContent.children.length == 1){
+                    if (todoContent.children.length == 1) {
                         container.removeChild(todoList);
-                    }else{
+                    } else {
                         todoContent.removeChild(todoItem);
                     }
                 }
 
                 let todoContents = document.getElementsByClassName('todo-content');
-                for (let i = 0; i < todoContents.length; ++i){
+                for (let i = 0; i < todoContents.length; ++i) {
                     let offset = getOffset(todoContents[i].parentElement.querySelector('.todo-date'));
-                    if ((event.changedTouches[0].clientX > offset[0]) && (event.changedTouches[0].clientX < offset[0] + offset[2]) 
-                        && (event.changedTouches[0].clientY > offset[1]) && (event.changedTouches[0].clientY < offset[1] + offset[3])){
-                            todoContents[i].appendChild(todoItem);
-                        }
+                    if ((event.changedTouches[0].clientX > offset[0]) && (event.changedTouches[0].clientX < offset[0] + offset[2]) &&
+                        (event.changedTouches[0].clientY > offset[1]) && (event.changedTouches[0].clientY < offset[1] + offset[3])) {
+                        todoContents[i].appendChild(todoItem);
+                    }
                 }
 
                 updateAllFromPage();
@@ -393,10 +409,10 @@
         });
     }
 
-    function updateAllFromPage(){
+    function updateAllFromPage() {
         var todoItems = document.getElementsByClassName('todo-item');
         var items = [];
-        for(let i = 0; i < todoItems.length; ++i){
+        for (let i = 0; i < todoItems.length; ++i) {
             let item = {};
             item.id = todoItems[i].id;
             item.completed = todoItems[i].querySelector('.todo-detail').classList.contains('completed');
@@ -473,8 +489,8 @@
         }
 
         let todoContents = document.getElementsByClassName('todo-content');
-        for(let i = 0; i < todoContents.length; ++i){
-            if(todoContents[i].children.length == 0){
+        for (let i = 0; i < todoContents.length; ++i) {
+            if (todoContents[i].children.length == 0) {
                 let todoList = todoContents[i].parentElement;
                 container.removeChild(todoList);
             }
@@ -495,7 +511,8 @@
     }
 
     window.onload = function () {
-        
+        updateTime();
+        setInterval(updateTime, PER_SECOND);
         initDB();
         initMenu();
         initInput();
