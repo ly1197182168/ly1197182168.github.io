@@ -156,3 +156,9 @@ Preview: https://ly1197182168.github.io/mytodo
   	......
   }
   ```
+
+## Reference
+
+- L-WJ1995 - todolist：https://github.com/L-WJ1995/todolist
+
+- 课程文档：http://luics.com/web-dev/zh-hans/TodoMVC/full.html
