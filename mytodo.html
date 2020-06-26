@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>MyToDo</title>
+
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=0.5,user-scalable=no,maximum-scale=1" name="viewport" />
+    <link href="css/mytodo.css" type="text/css" rel="stylesheet" />
+    <!-- <script src="js/storage.js"></script> -->
+    <script src="js/mytodo.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title">todos</div>
+            <div class="time">
+                <div id="clock" class="clock">18:07</div>
+                <div class="date">
+                    <div class="day">Jun.26</div>
+                    <div class="year">2020</div>
+                </div>
+            </div>
+        </div>
+        <div class="menu">
+            <span id="count">No item left</span>
+            <a id="all" class="selected" href="#">All</a>
+            <a id="active" href="#">Active</a>
+            <a id="completed" href="#">Completed</a>
+            <button id="clear-completed">Clear completed</a>
+        </div>
+        <div class="input-container">
+            <div class="input">
+                <a id="toggle-all" href="#/">❯</a>
+                <input id="new-todo" autofocus="autofocus" placeholder="What needs to be done?">
+                <input id="new-date" type="date">
+            </div>
+        </div>
+        <div id="todo-list-container" class="todo-list-container">
+            <!-- <div class="todo-list">
+                <div class="todo-date">2020-06-25</div>
+                <ul class="todo-content">
+                    <li class="todo-item">
+                        <span class="toggle"><img></span>
+                        <div class="todo-detail">Luoyu jintian yao shui le!</div>
+                        <span class="delete"><img></span>
+                    </li>
+                </ul>
+            </div> -->
+        </div>
+    </div>
+</body>
+
+</html>
