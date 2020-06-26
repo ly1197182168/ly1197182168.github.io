@@ -19,8 +19,6 @@ function updateTime() {
     document.getElementById('year').innerHTML = year;
 }
 
-
-
 function initMenu() {
     var all = document.getElementById('all');
     var active = document.getElementById('active');
@@ -288,7 +286,7 @@ function initTodoItem(id, item) {
             drag = null;
 
             let offset = getOffset(todoItem);
-            if ((event.changedTouches[0].clientX < offset[0] - 0.75 * offset[2]) || (event.changedTouches[0].clientX > offset[0] + 0.75 * offset[2])) {
+            if ((event.changedTouches[0].clientX < offset[0] + 0.15 * offset[2]) || (event.changedTouches[0].clientX > offset[0] + 0.85 * offset[2])) {
                 let todoContent = todoItem.parentElement;
                 let todoList = todoContent.parentElement;
                 let container = document.getElementById('todo-list-container');
