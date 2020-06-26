@@ -1,3 +1,8 @@
+/* Author: 1651760 Yu Luo
+ * Description:
+ *   This JavaScript file implements features related to UI of mytodo, with calling functions in storage.js.
+ */
+
 'use strict';
 
 const SECONDS = 1000 * 60 * 60 * 24;
