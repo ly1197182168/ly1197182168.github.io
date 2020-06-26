@@ -214,8 +214,8 @@ input[type="date"]::-webkit-datetime-edit {
 }
 
 .todo-date {
-    height: 64px;
-    font-size: 28px;
+    height: 48px;
+    font-size: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -281,8 +281,8 @@ input[type="date"]::-webkit-datetime-edit {
 
 .toggle>img {
     display: inline-block;
-    width: 56px;
-    height: 56px;
+    width: 36px;
+    height: 36px;
     vertical-align: middle;
     opacity: 0.6;
     border: 1px solid rgba(0, 0, 0, 0.4);
@@ -291,7 +291,7 @@ input[type="date"]::-webkit-datetime-edit {
 
 .todo-detail {
     display: inline-block;
-    font-size: 42px;
+    font-size: 32px;
     padding-right: 64px;
     flex-grow: 1;
 }
@@ -299,8 +299,8 @@ input[type="date"]::-webkit-datetime-edit {
 .delete>img {
     display: none;
     content: url("../images/delete-icon.png");
-    width: 40px;
-    height: 40px;
+    width: 28px;
+    height: 28px;
     vertical-align: middle;
     opacity: 0.2;
 }
