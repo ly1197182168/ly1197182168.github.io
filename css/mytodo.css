@@ -189,6 +189,13 @@ button {
     padding-right: 4px;
 }
 
+input[type="date"]::-webkit-datetime-edit-fields-wrapper { 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
 /* 
  *************** Todo ***************
  */
