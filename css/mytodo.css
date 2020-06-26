@@ -20,25 +20,27 @@ body {
 }
 
 .header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     width: 600px;
     padding: 24px 0px;
 }
 
 .title {
-    float: left;
-    font-size: 80px;
+    font-size: 100px;
     color: rgba(175, 47, 47, 0.2);
 }
 
 .time{
-    float: right;
     display: flex;
     flex-direction: row;
 }
 
 .clock{
     text-align: center;
-    font-size: 72px;
+    font-size: 90px;
     padding-top: 6px;
     padding-right: 6px;
     color: rgba(175, 47, 47, 0.2);
@@ -61,23 +63,21 @@ body {
 
 .menu {
     width: 600px;
-    height: 48px;
+    height: 64px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     color: rgb(119, 119, 119);
-    padding: 10px 15px;
+    padding: 12px 15px;
     margin-top: 12px;
-    font-size: 16px;
+    font-size: 20px;
     text-align: center;
-    align-content: center;
     background: white;
     border-top: 1px solid #e6e6e6;
     box-shadow:
         0px 2px 4px 0px rgba(0, 0, 0, 0.2),
         0px 25px 50px 0px rgba(0, 0, 0, 0.1);
-}
-
-#count {
-    float: left;
-    text-align: left;
 }
 
 .menu a {
@@ -88,6 +88,7 @@ body {
     text-decoration: none;
     border: 1px solid transparent;
     border-radius: 3px;
+    vertical-align: middle;
 }
 
 .menu a:hover {
@@ -100,8 +101,9 @@ body {
 
 #clear-completed {
     visibility: hidden;
-    float: right;
-    position: relative;
+    align-content: flex-end;
+    /* float: right; */
+    /* position: relative; */
     color: rgb(119, 119, 119);
     text-decoration: none;
     cursor: pointer;
@@ -133,7 +135,7 @@ button {
 
 .input {
     width: 600px;
-    height: 65px;
+    height: 90px;
     display: flex;
     flex-direction: row;
     background: white;
@@ -142,10 +144,10 @@ button {
 }
 
 #toggle-all {
-    height: 65px;
     width: 65px;
+    height: 90px;
     display: inline-block;
-    line-height: 65px;
+    line-height: 80px;
     font-size: 25px;
     color: #E6E6E6;
     text-align: center;
@@ -158,12 +160,12 @@ button {
 }
 
 .input input {
-    width: calc(100% - 230px);
+    width: calc(100% - 240px);
     height: 100%;
     display: inline-block;
     border: none;
     outline: none;
-    font-size: 24px;
+    font-size: 28px;
     color: rgb(119, 119, 119);
     text-align: start;
     padding: 16px 16px 16px 0px;
@@ -175,14 +177,14 @@ button {
 }
 
 #new-date {
-    width: 165px;
+    width: 175px;
     height: 100%;
     display: inline-block;
     background: white;
     border: none;
     border-left: 1px solid #ededed;
     outline: none;
-    font-size: 18px;
+    font-size: 20px;
     padding-left: 10px;
     padding-right: 4px;
 }
@@ -201,13 +203,15 @@ button {
 
 .todo-list {
     background: white;
-    margin: 16px 0px;
+    margin: 24px 0px;
 }
 
 .todo-date {
-    height: 48px;
-    font-size: 18px;
-    text-align: center;
+    height: 64px;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
     padding: 10px 0px;
     border-bottom: 1px solid #ededed;
@@ -248,9 +252,9 @@ button {
 
 .toggle,
 .delete {
-    width: 64px;
-    height: 64px;
-    line-height: 64px;
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
     text-align: center;
 }
 
@@ -270,8 +274,8 @@ button {
 
 .toggle>img {
     display: inline-block;
-    width: 32px;
-    height: 32px;
+    width: 56px;
+    height: 56px;
     vertical-align: middle;
     opacity: 0.6;
     border: 1px solid rgba(0, 0, 0, 0.4);
@@ -280,7 +284,7 @@ button {
 
 .todo-detail {
     display: inline-block;
-    font-size: 24px;
+    font-size: 42px;
     padding-right: 64px;
     flex-grow: 1;
 }
@@ -288,8 +292,8 @@ button {
 .delete>img {
     display: none;
     content: url("../images/delete-icon.png");
-    width: 24px;
-    height: 24px;
+    width: 40px;
+    height: 40px;
     vertical-align: middle;
     opacity: 0.2;
 }
