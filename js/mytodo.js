@@ -224,7 +224,7 @@ function addTodoList(item) {
     } else {
         status = 'adequate';
     }
-    
+
     todoList.innerHTML = [
         '<div class="todo-date ' + status + '">' + item.date + '</div>',
         '<ul class="todo-content">',
@@ -324,7 +324,7 @@ function initTodoItem(id, item) {
             // Set absolute position of dragged item while touch moves
             todoItem.style.left = (event.touches[0].clientX - todoItem.x) + 'px';
             todoItem.style.top = (event.touches[0].clientY - todoItem.y) + 'px';
-            
+
             // Check all todo items and find one to change its position
             let todoItems = document.getElementsByClassName('todo-item');
             for (let i = 0; i < todoItems.length; ++i) {
