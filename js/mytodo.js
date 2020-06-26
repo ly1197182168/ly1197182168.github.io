@@ -300,6 +300,7 @@
 
         todoItem.addEventListener('touchstart', function (event) {
             drag = true;
+            todoItem.classList.add('dragging');
             todoItem.style.zIndex = 100;
             let offset = getOffset(todoItem);
             todoItem.x = event.touches[0].clientX - offset[0];
@@ -352,6 +353,7 @@
         todoItem.addEventListener('touchend', function (event) {
             if (drag) {
                 todoItem.style.position = 'static';
+                todoItem.classList.remove('dragging');
                 dragAlt.parentElement.insertBefore(todoItem, dragAlt);
                 todoItem.parentElement.removeChild(dragAlt);
                 drag = null;

@@ -264,6 +264,10 @@ button {
     transition: .2s;
 }
 
+.todo-item.dragging{
+    background-color: #EDEDED;
+}
+
 .toggle>img {
     display: inline-block;
     width: 32px;
