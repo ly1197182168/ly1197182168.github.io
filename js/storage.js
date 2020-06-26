@@ -5,11 +5,11 @@
 
 'use strict';
 
-
+// DB name
 const DB = 'mytodo';
 
 /**
- * @description: initialize db in localStorage
+ * @description: Initialize db in localStorage
  */
 function initDB() {
     if (!localStorage.getItem(DB)) {
@@ -18,7 +18,7 @@ function initDB() {
 }
 
 /**
- * @description: add an item to db
+ * @description: Add an item to db
  * @param {item} item - {"id": new Date.getTime(), "completed": true/false, "date": "xxxx-xx-xx", "detail": }
  */
 function add(item) {
@@ -28,7 +28,7 @@ function add(item) {
 }
 
 /**
- * @description: remove an item by id
+ * @description: Remove an item by id
  * @param {number} id 
  */
 function remove(id) {
@@ -43,9 +43,9 @@ function remove(id) {
 }
 
 /**
- * @description: get an item by id
+ * @description: Get an item by id
  * @param {number} id 
- * @return: an item
+ * @return: An item
  */
 function get(id) {
     var items = JSON.parse(localStorage.getItem(DB));
@@ -57,15 +57,15 @@ function get(id) {
 }
 
 /**
- * @description: get all items
- * @return: all items
+ * @description: Get all items
+ * @return: All items
  */
 function getAll() {
     return JSON.parse(localStorage.getItem(DB));
 }
 
 /**
- * @description: set the item with param id as the param item
+ * @description: Set the item with param id as the param item
  * @param {number} id
  * @param {item} item
  */
@@ -83,7 +83,7 @@ function update(id, item) {
 }
 
 /**
- * @description: update all items
+ * @description: Update all items
  * @param {item[]} items
  */
 function updateAll(items) {
@@ -91,7 +91,7 @@ function updateAll(items) {
 }
 
 /**
- * @description: set the attribute of completed for all items as param completed
+ * @description: Set the attribute of completed for all items as param completed
  * @param {bool} completed
  */
 function updateAllCompleted(completed) {
@@ -103,7 +103,7 @@ function updateAllCompleted(completed) {
 }
 
 /**
- * @description: set menu filter status
+ * @description: Set menu filter status
  * @param {String} status 
  */
 function setStatus(status) {
@@ -111,8 +111,8 @@ function setStatus(status) {
 }
 
 /**
- * @description: get menu filter status
- * @return: menu filter status1
+ * @description: Get menu filter status
+ * @return: Menu filter status1
  */
 function getStatus() {
     return localStorage.getItem('status');
