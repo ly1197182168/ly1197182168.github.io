@@ -67,6 +67,14 @@
         localStorage.setItem(DB, JSON.stringify(items));
     }
 
+    function setStatus(status){
+        localStorage.setItem('status', status);
+    }
+
+    function getStatus(){
+        return localStorage.getItem('status');
+    }
+
     function updateTime() {
         var date = new Date();
         var year = date.getFullYear();
@@ -90,10 +98,18 @@
         var completed = document.getElementById('completed');
         var clearCompleted = document.getElementById('clear-completed');
 
+        if(getStatus()){
+            all.classList.remove('selected');
+            active.classList.remove('selected');
+            completed.classList.remove('selected');
+            document.getElementById(getStatus()).classList.add('selected');
+        }
+
         all.addEventListener('click', function () {
             all.classList.add('selected');
             active.classList.remove('selected');
             completed.classList.remove('selected');
+            setStatus('all');
             updatePage();
         });
 
@@ -101,6 +117,7 @@
             all.classList.remove('selected');
             active.classList.add('selected');
             completed.classList.remove('selected');
+            setStatus('active');
             updatePage();
         });
 
@@ -108,6 +125,7 @@
             all.classList.remove('selected');
             active.classList.remove('selected');
             completed.classList.add('selected');
+            setStatus('completed');
             updatePage();
         });
 
@@ -498,7 +516,7 @@
 
         var completedCount = todoItems.length - leftCount;
         var count = document.getElementById('count');
-        count.innerHTML = (leftCount || '0') + ' todo left';
+        count.innerHTML = (leftCount || '0') + ' todo(s) left';
         var clearCompleted = document.getElementById('clear-completed');
         clearCompleted.style.visibility = completedCount > 0 ? 'visible' : 'hidden';
 
