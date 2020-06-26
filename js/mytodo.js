@@ -283,10 +283,10 @@ function initTodoItem(id, item) {
             todoItem.classList.remove('dragging');
             dragAlt.parentElement.insertBefore(todoItem, dragAlt);
             todoItem.parentElement.removeChild(dragAlt);
-            drag = null;
+            drag = false;
 
             let offset = getOffset(todoItem);
-            if ((event.changedTouches[0].clientX < offset[0] + 0.15 * offset[2]) || (event.changedTouches[0].clientX > offset[0] + 0.85 * offset[2])) {
+            if (event.changedTouches[0].clientX > offset[0] + 0.85 * offset[2]) {
                 let todoContent = todoItem.parentElement;
                 let todoList = todoContent.parentElement;
                 let container = document.getElementById('todo-list-container');
