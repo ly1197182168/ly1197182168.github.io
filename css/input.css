@@ -1,0 +1,66 @@
+.input-container {
+    margin: 36px 0px;
+}
+
+.input {
+    width: 600px;
+    height: 90px;
+    display: flex;
+    flex-direction: row;
+    background: white;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2),
+        0px 25px 50px 0px rgba(0, 0, 0, 0.1);
+}
+
+#toggle-all {
+    width: 65px;
+    height: 90px;
+    display: inline-block;
+    line-height: 80px;
+    font-size: 25px;
+    color: #E6E6E6;
+    text-align: center;
+    text-decoration: none;
+    transform: rotate(90deg);
+}
+
+.input .all-checked {
+    color: rgb(119, 119, 119) !important;
+}
+
+.input input {
+    width: calc(100% - 240px);
+    height: 100%;
+    display: inline-block;
+    border: none;
+    outline: none;
+    font-size: 28px;
+    color: rgb(119, 119, 119);
+    text-align: start;
+    padding: 16px 16px 16px 0px;
+}
+
+.input input::-webkit-input-placeholder {
+    font-style: italic;
+    color: #E6E6E6;
+}
+
+#new-date {
+    width: 175px;
+    height: 100%;
+    display: inline-block;
+    background: white;
+    border: none;
+    border-left: 1px solid #ededed;
+    outline: none;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 4px;
+}
+
+input[type="date"]::-webkit-datetime-edit {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
