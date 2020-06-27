@@ -53,7 +53,7 @@ Preview: https://ly1197182168.github.io/mytodo
   用户在输入框输入时，显示所有包含实时输入文本的字串的项目，能够配合菜单过滤中的选项实现多条件过滤。
 
   ```javascript
-  todoDetail.innerHTML.toUpperCase().indexOf(textFilter) > -1)；
+  todoDetail.innerHTML.toUpperCase().indexOf(textFilter) > -1);
   ```
 
 - 编辑单条 `Todo`
