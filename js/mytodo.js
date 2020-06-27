@@ -320,6 +320,7 @@ function initTodoItem(id, item) {
 
     // Add touch move listener for todo item
     todoItem.addEventListener('touchmove', function (event) {
+        event.preventDefault();
         if (drag) {
             // Set absolute position of dragged item while touch moves
             todoItem.style.left = (event.touches[0].clientX - todoItem.x) + 'px';
