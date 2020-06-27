@@ -98,7 +98,6 @@ function initMenu() {
     });
 }
 
-
 /**
  * @description: Initialize todo input
  */
@@ -175,7 +174,6 @@ function addTodoItem(detail, date) {
     add(item);
     addTodoItemUI(date, item)
 }
-
 
 /**
  * @description: Add a todo item if date exits or a todo list if date doesn't exit
@@ -282,7 +280,6 @@ function getOffset(item) {
     offset[3] = item.offsetHeight;
     return offset;
 }
-
 
 /**
  * @description: Initialize all todo items
@@ -405,38 +402,51 @@ function initTodoItem(id, item) {
 
     // Add dblclick listener for todo detail
     var todoDetail = todoItem.querySelector('.todo-detail');
-    todoDetail.addEventListener('dblclick', function () {
-        todoItem.classList.add('editing');
-        let edit = document.createElement('input');
-        let finished = false;
-        edit.setAttribute('type', 'text');
-        edit.setAttribute('class', 'edit');
-        edit.setAttribute('value', todoDetail.innerHTML);
-
-        function finish() {
-            if (finished) return;
-            finished = true;
-            todoItem.removeChild(edit);
-            todoItem.classList.remove('editing');
-        }
-
-        edit.addEventListener('blur', function () {
-            finish();
-        });
-
-        edit.addEventListener('keyup', function (event) {
-            if (event.keyCode == 27) {
-                finish();
-            } else if (event.keyCode == 13) {
-                todoDetail.innerHTML = this.value;
-                item.detail = this.value;
-                update(id, item);
-                finish();
+    var touch1, touch2;
+    var clicked = 1;
+    todoDetail.addEventListener('click', function () {
+        if(clicked == 1){
+            touch1 = new Date().getTime();
+            clicked++;
+        }else if(clicked == 2){
+            touch2 = new Date().getTime();
+            if(Math.abs(touch2 - touch1) < 500){
+                todoItem.classList.add('editing');
+                let edit = document.createElement('input');
+                let finished = false;
+                edit.setAttribute('type', 'text');
+                edit.setAttribute('class', 'edit');
+                edit.setAttribute('value', todoDetail.innerHTML);
+    
+                function finish() {
+                    if (finished) return;
+                    finished = true;
+                    todoItem.removeChild(edit);
+                    todoItem.classList.remove('editing');
+                }
+    
+                edit.addEventListener('blur', function () {
+                    finish();
+                });
+    
+                edit.addEventListener('keyup', function (event) {
+                    if (event.keyCode == 27) {
+                        finish();
+                    } else if (event.keyCode == 13) {
+                        todoDetail.innerHTML = this.value;
+                        item.detail = this.value;
+                        update(id, item);
+                        finish();
+                    }
+                });
+    
+                todoItem.appendChild(edit);
+                edit.focus();
+                clicked = 1;
+            }else{
+                touch1 = new Date().getTime();
             }
-        });
-
-        todoItem.appendChild(edit);
-        edit.focus();
+        }
     }, false);
 
     // Add click listener for delete button
