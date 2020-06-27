@@ -61,22 +61,32 @@ Preview: https://ly1197182168.github.io/mytodo
   双击 `Todo`，以输入框替代当前项并自动填入待编辑文本，点击其他任意除取消编辑，编辑完成后按回车确认。
 
   ```javascript
-  todoDetail.addEventListener('dblclick', function (){
-      let edit = document.createElement('input');
-      edit.setAttribute('value', todoDetail.innerHTML);
-      ......
-      edit..addEventListener('blur', function () {
-              finish();
-      });
-      ......
-      edit.addEventListener('keyup', function (event){
-          if (event.keyCode == 13){
-              update(id, item);
-              finish()
+  var touch1, touch2;
+  var clicked = 1;
+  todoDetail.addEventListener('click', function (){
+      if(clicked == 1){
+              touch1 = new Date().getTime();
+              clicked++;
+      } else if (clicked == 2) {
+          touch2 = new Date().getTime();
+          if(Math.abs(touch2 - touch1) < 500) {
+              let edit = document.createElement('input');
+      		edit.setAttribute('value', todoDetail.innerHTML);
+      		......
+      		edit..addEventListener('blur', function () {
+              		finish();
+      		});
+      		......
+      		edit.addEventListener('keyup', function (event){
+          		if (event.keyCode == 13){
+              		update(id, item);
+              		finish()
+          		}
+          		......
+      		});
+      		......  
           }
-          ......
-      });
-      ......  
+      }
   });
   ```
 
